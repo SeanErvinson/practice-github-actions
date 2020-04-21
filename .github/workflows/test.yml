@@ -20,4 +20,3 @@ jobs:
         with:
           source: "db.sqlite3"
           target: "/home/gitlab/test"
-          rm: true
