@@ -18,5 +18,5 @@ jobs:
           port: ${{ secrets.SERVER_PORT }}
           key: ${{ secrets.SSH_KEY }}
           source: "*, !db.sqlite3"
-          target: "test"
+          target: "/home/gitlab/test"
           rm: true
