@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Transfer file to server
-        uses: appleboy/ssh-action@master
+        uses: appleboy/scp-action@master
         env:
           HOST: ${{ secrets.SERVER_IP }}
           USERNAME: ${{ secrets.SERVER_USER }}
