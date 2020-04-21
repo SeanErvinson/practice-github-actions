@@ -7,7 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Transfer file to server
@@ -19,5 +18,20 @@ jobs:
           KEY: ${{ secrets.SSH_KEY }}
         with:
           source: "*, !db.sqlite3, !.git*, !Pipfile*"
+          target: "/home/gitlab/test"
+          rm: true
+  build2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Transfer file to server
+        uses: appleboy/scp-action@master
+        env:
+          HOST: ${{ secrets.SERVER_IP }}
+          USERNAME: ${{ secrets.SERVER_USER }}
+          PORT: ${{ secrets.SERVER_PORT }}
+          KEY: ${{ secrets.SSH_KEY }}
+        with:
+          source: "db.sqlite3"
           target: "/home/gitlab/test"
           rm: true
